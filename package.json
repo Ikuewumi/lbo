@@ -10,7 +10,12 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@astrojs/solid-js": "^5.0.4",
+    "@nanostores/solid": "^0.5.0",
     "astro": "^5.2.5",
+    "nanostores": "^0.11.3",
+    "solid-js": "^1.9.4",
+    "typescript": "^5.7.3",
     "vitest": "^3.0.5"
   }
 }
