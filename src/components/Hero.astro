@@ -1,0 +1,39 @@
+---
+---
+
+<section class="hero">
+	<div class="hero-carousel"></div>
+	<div class="hero-content">
+		<h1>Dennis Laazovic</h1>
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing
+			elit. Repudiandae expedita atque eius mollitia
+			consequuntur dolore excepturi perferendis culpa commodi
+			nesciunt.
+		</p>
+	</div>
+</section>
+
+<style lang="scss">
+	.hero {
+		min-height: 300px;
+		width: 100%;
+		display: grid;
+		grid-template: 1fr / 1fr;
+
+		& > * {
+			grid-area: 1 / -1;
+		}
+
+		&-carousel {
+			background: grey;
+			width: 100%;
+		}
+
+		&-content {
+			background: hsl(0 0 0 / 0.1);
+			align-self: end;
+			justify-self: start;
+		}
+	}
+</style>

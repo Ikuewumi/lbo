@@ -1,0 +1,47 @@
+---
+import "../styles/base.scss";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<div class="sgrid" id="root">
+			<header class="he">
+				<div class="he-logo">
+					<strong class="he-text"> L.O.</strong>
+				</div>
+				<nav class="he-nav">
+					<ul class="he-list">
+						<li class="he-item">
+							<a
+								href="#"
+								class="he-link"
+								>Home</a
+							>
+							<a
+								href="#"
+								class="he-link"
+								>Gallery</a
+							>
+							<a
+								href="#"
+								class="he-link"
+								>About</a
+							>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+			<main>
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>
