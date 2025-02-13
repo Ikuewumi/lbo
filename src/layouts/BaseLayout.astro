@@ -1,5 +1,6 @@
 ---
 import "../styles/base.scss";
+import Assets from "../components/Assets.astro";
 ---
 
 <html lang="en">
@@ -8,6 +9,9 @@ import "../styles/base.scss";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&family=Syne:wght@400..800&display=swap" rel="stylesheet">
 		<title>Astro</title>
 	</head>
 	<body>
@@ -43,5 +47,8 @@ import "../styles/base.scss";
 				<slot />
 			</main>
 		</div>
+
+
+		<Assets />
 	</body>
 </html>

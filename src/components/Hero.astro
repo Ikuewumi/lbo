@@ -2,24 +2,28 @@
 ---
 
 <section class="hero">
-	<div class="hero-carousel"></div>
+	<div class="hero-carousel">
+		<img src="/demo.jpg" alt="" class="hero-img">
+	</div>
 	<div class="hero-content">
-		<h1>Dennis Laazovic</h1>
-		<p>
-			Lorem ipsum dolor sit amet consectetur, adipisicing
-			elit. Repudiandae expedita atque eius mollitia
-			consequuntur dolore excepturi perferendis culpa commodi
-			nesciunt.
-		</p>
+			<h1 class="hero-name">Dennis Laazovic</h1>
+			<p class="hero-desc">
+				Lorem ipsum dolor sit amet consectetur, adipisicing
+				elit. Repudiandae expedita atque eius mollitia
+				consequuntur dolore excepturi perferendis culpa commodi
+				nesciunt.
+			</p>
 	</div>
 </section>
 
 <style lang="scss">
 	.hero {
-		min-height: 300px;
+		--max-height: 450px;
+		height: var(--max-height);
 		width: 100%;
 		display: grid;
 		grid-template: 1fr / 1fr;
+		overflow: hidden;
 
 		& > * {
 			grid-area: 1 / -1;
@@ -30,10 +34,28 @@
 			width: 100%;
 		}
 
+		&-img {
+			height: var(--max-height);
+			width: 100%;
+			object-fit: cover;
+		}
+
 		&-content {
-			background: hsl(0 0 0 / 0.1);
+			display: grid;
+			gap: 0.5rem;
+			background: hsl(0deg 0% 0% / 80%);
+			color: var(--clr-white);
+			width: min(100%, 475px);
+			padding: 1rem 1.5rem 1.5rem;
 			align-self: end;
 			justify-self: start;
+		}
+
+
+		&-name {
+			font-size: var(--step-4);
+			font-family: var(--font-display);
+			font-weight: 700;
 		}
 	}
 </style>

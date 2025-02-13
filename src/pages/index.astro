@@ -5,4 +5,118 @@ import Hero from "../components/Hero.astro";
 
 <BaseLayout>
 	<Hero />
+
+	<section class="works">
+		<h2 class="works-heading">Some of his other works</h2>
+
+
+		<ul class="works-list">
+			<li class="work-li">
+				<div class="work-item">
+					<img src="/demo.jpg" alt="" class="work-img">
+					<div class="work-content">
+					<h3 class="work-title">Michaelangela</h3>
+					<p class="work-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, quod asperiores. Dolorem nulla odio repudiandae.</p>
+					<div class="work-time">
+						<svg class="work-timesvg" viewBox="0 0 24 24">
+							<use href="#calendar"></use>
+						</svg>
+						<span class="work-timespan">yesterday</span>
+					</div>
+					</div>
+
+					<div class="work-bar">
+						<button data-btn class="work-barbtn" title="share">Share</button>
+					</div>
+				</div>
+			</li>
+
+		</ul>
+
+	</section>
+
+
+
+	<p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam, adipisci?</p>
 </BaseLayout>
+
+
+
+<style lang="scss">
+
+.works {
+	--work-width: 300px;
+	margin-top: 2rem;
+	display: grid;
+	gap: 0.5rem;
+
+	&-li {
+		display: contents;
+	}
+
+	&-list {
+		display: grid;
+		gap: 1rem;
+		list-style: none;
+		grid-template-columns: repeat(auto-fill, minmax(var(--work-width), 1fr));
+	}
+}
+
+
+.work {
+	&-item {
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	&-img {
+		object-fit: cover;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		border-radius: 1vmax 1vmax 0 0;
+		overflow: hidden;
+	}
+
+	&-content {
+		display: grid;
+		gap: 0.5rem;
+		padding: 0.75rem 0.65rem 0.9rem;
+		background: var(--clr-gray-200);
+	}
+
+	&-title {
+		font-size: var(--step-2);
+		font-family: var(--font-display);
+		font-weight: 700;
+		line-height: 0.9;
+	}
+
+	&-desc {
+		line-height: 1.4;
+	}
+
+	&-time {
+		--icon-size: 1rem;
+		display: flex;
+		place-items: center;
+		gap: 0.25rem;
+		color: var(--clr-gray-800);
+		font-style: italic;
+	}
+
+
+	&-barbtn {
+		--btn-clr: var(--clr-black);
+		width: 100%;
+		border-radius: 0 0 1vmax 1vmax;
+		text-transform: uppercase;
+		font-size: calc(var(--step-1) * 1.25);
+		font-family: var(--font-display);
+		font-weight: 300;
+	}
+	
+}
+
+
+
+</style>
