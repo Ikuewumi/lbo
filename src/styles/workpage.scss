@@ -1,0 +1,10 @@
+.work {
+	&-img {
+		cursor: pointer;
+		object-fit: contain;
+		max-width: min(500px, 80vw);
+		max-height: 70vh; 
+		margin: 0.85rem auto 0.9rem;
+		box-shadow: 0 0 1px 10px var(--clr-gray-400);
+	}
+}

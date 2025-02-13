@@ -60,6 +60,12 @@ body {
 #root {
 	min-height: 100vh;
 	align-content: start;
+
+
+	&[data-toast] {
+		overflow: hidden;
+		height: 100vh;
+	}
 }
 
 

@@ -7,7 +7,7 @@ import Hero from "../components/Hero.astro";
 	<Hero />
 
 	<section class="works">
-		<h2 class="works-heading">Some of his other works</h2>
+		<!-- <h2 class="works-heading">Some of his other works</h2> -->
 
 
 		<ul class="works-list">
@@ -26,7 +26,10 @@ import Hero from "../components/Hero.astro";
 					</div>
 
 					<div class="work-bar">
-						<button data-btn class="work-barbtn" title="share">Share</button>
+						<button data-btn class="work-barbtn" title="share">
+							<svg viewBox="0 0 24 24"><use href="#share"></use></svg>
+							Share
+						</button>
 					</div>
 				</div>
 			</li>
@@ -37,7 +40,28 @@ import Hero from "../components/Hero.astro";
 
 
 
-	<p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam, adipisci?</p>
+	<section class="cta">
+		<h2 class="cta-heading">Ready to connect?</h2>
+
+		<div class="cta-btn-bar">
+			<a href="#" class="cta-btn" data-btn="">
+				<svg viewBox="0 0 24 24">
+					<use href="#whatsapp"></use>
+				</svg>
+				WhatsApp</a>
+			<a href="#" class="cta-btn" data-btn="">
+				<svg viewBox="0 0 24 24">
+					<use href="#alternate-email"></use>
+				</svg>
+				Email</a>
+		</div>
+
+
+
+	</section>
+
+
+
 </BaseLayout>
 
 
@@ -107,6 +131,7 @@ import Hero from "../components/Hero.astro";
 
 	&-barbtn {
 		--btn-clr: var(--clr-black);
+		gap: 0.4rem;
 		width: 100%;
 		border-radius: 0 0 1vmax 1vmax;
 		text-transform: uppercase;
@@ -118,5 +143,45 @@ import Hero from "../components/Hero.astro";
 }
 
 
+
+.cta {
+	--cta-height: 250px;
+	margin-top: 2rem;
+	padding: 1rem 1.75rem;
+	display: grid;
+	gap: 1rem;
+	place-content: center;
+	place-items: center;
+	min-height: var(--cta-height);
+	background: var(--clr-gray-200);
+	border-radius: 1vmax;
+
+
+	&-heading {
+		font-size: var(--step-4);
+		font-family: var(--font-display);
+		font-weight: 700;
+		text-shadow: 0.5px 0.5px hsl(0deg 0% 0% / 70%);
+	}
+
+
+	&-btn-bar {
+		display: flex;
+		gap: 0.75rem;
+		flex-flow: row wrap;
+		place-items: center;
+		place-content: center;
+	}
+
+
+	&-btn {
+		--icon-size: 1.5rem;
+		--btn-bg: var(--clr-gray-100);
+		--btn-border: 1px solid var(--clr-gray-800);
+		padding: 0.5rem 0.75rem 0.55rem;
+		gap: 0.25rem;
+		text-decoration: none;
+	}
+}
 
 </style>

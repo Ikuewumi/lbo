@@ -1,6 +1,7 @@
 ---
 import "../styles/base.scss";
 import Assets from "../components/Assets.astro";
+import ImageBox from "../components/ImageBox";
 ---
 
 <html lang="en">
@@ -16,29 +17,37 @@ import Assets from "../components/Assets.astro";
 	</head>
 	<body>
 		<div class="sgrid" id="root">
-			<header class="he">
-				<div class="he-logo">
-					<strong class="he-text"> L.O.</strong>
+			<header class="header">
+				<div class="header-logo">
+					<strong class="header-text"> L.O.</strong>
 				</div>
-				<nav class="he-nav">
-					<ul class="he-list">
-						<li class="he-item">
+				<nav class="header-nav">
+					<ul class="header-list">
+						<li class="header-item">
 							<a
-								href="#"
-								class="he-link"
+								href="/"
+								class="header-link"
 								>Home</a
 							>
+							
+						</li>
+<li class="header-item">
 							<a
-								href="#"
-								class="he-link"
+								href="/work"
+								class="header-link"
 								>Gallery</a
 							>
-							<a
-								href="#"
-								class="he-link"
-								>About</a
-							>
+							
 						</li>
+<li class="header-item">
+							<a
+								href="/"
+								class="header-link"
+								>Home</a
+							>
+							
+						</li>
+
 					</ul>
 				</nav>
 			</header>
@@ -46,9 +55,114 @@ import Assets from "../components/Assets.astro";
 			<main>
 				<slot />
 			</main>
+
+			<footer class="footer">
+				<p class="footer-text">Copyright &copy; <strong class="footer-name">wolfe</strong> 2025.</p>
+				<ul class="footer-links">
+					<li class="footer-li">
+						<a href="#" class="footer-link">Facebook</a>
+					</li>
+					<li class="footer-li">
+						<a href="#" class="footer-link">Mastodoon</a>
+					</li>
+					<li class="footer-li">
+						<a href="#" class="footer-link">X</a>
+					</li>
+					<li class="footer-li">
+						<a href="#" class="footer-link">Telegram</a>
+					</li>
+				</ul>
+			</footer>
 		</div>
 
 
+		<ImageBox client:only />
 		<Assets />
 	</body>
 </html>
+
+
+<style lang="scss">
+
+
+.header {
+	display: flex;
+	gap: 0.5rem 2rem;
+	flex-flow: row wrap;
+	place-items: center;
+	justify-content: space-between;
+	font-size: var(--step-1);
+	padding: 1.25rem 0;
+	color: var(--clr-gray-900);
+	border-bottom: 3px dashed var(--clr-gray-200);
+
+	&-text {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: var(--step-2);
+	}	
+
+
+	&-nav {
+		display: flex;
+		gap: 0.75rem;
+		place-items: center;
+		flex-flow: row wrap;
+	}
+
+	&-list {
+		list-style: none;
+	}
+
+	&-list, &-li {
+		display: contents;
+	}
+
+
+	&-link {
+		color: var(--clr-gray-900);
+	}
+}
+
+.footer {
+	margin-top: 2rem;
+	border-top: 3px dashed var(--clr-gray-200);
+	display: grid;
+	gap: 0.25rem;
+	padding: 1rem 0rem 1.25rem;
+	line-height: 1.5;
+	font-size: var(--step-1);
+
+	&-text {
+		font-family: sans-serif;
+	}
+
+	&-name {
+		font-style: italic;
+		font-weight: 600;
+	}
+
+	&-links {
+		display: flex;
+		flex-flow: row wrap;
+		gap: 1rem;
+		list-style: none;
+	}
+
+	&-li {
+		display: contents;
+
+		& + & {
+			.footer-link {
+				border-left: 2px solid var(--clr-gray-500);
+				padding-left: 1rem;
+			}
+		}
+	}
+
+	&-link  {
+		color: var(--clr-gray-900);
+	}
+}
+
+</style>

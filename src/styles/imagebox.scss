@@ -1,0 +1,51 @@
+
+.imgbox {
+	position: fixed;
+	inset: 0;
+	background: hsl(0deg 0% 0% / 80%);
+	backdrop-filter: blur(6px);
+	isolation: isolate;
+	overflow-y: scroll;
+	display: grid;
+	align-content: start;
+
+	&[hidden][inert] {
+		display: none;
+	}
+
+	&-close {
+		--btn-padding: 0.25rem 0.75rem 0.3rem;
+		width: fit-content;
+		margin: 0.5rem 0.5rem -1rem auto;
+		font-size: var(--step-1);
+		z-index: 2;
+	}
+
+	&-figure {
+		display: flex;
+		flex-flow: column;
+		place-content: center;
+		margin-top: 0.5rem;
+		height: fit-content;
+		width: fit-content;
+		margin-inline: auto;
+	}
+
+	&-img {
+		object-fit: contain;
+		max-height: calc(100vh - 100px); 
+		margin-inline: 0.5rem;
+	}
+
+	&-caption {
+		font-size: var(--step-2);
+		font-family: var(--font-display);
+		font-weight: 300;
+		line-height: 0.9;
+		text-align: center;
+		color: var(--clr-white);
+		margin-top: 0.75rem;
+
+	}
+}
+
