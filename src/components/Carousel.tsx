@@ -11,8 +11,6 @@ export const Carousel: Component<{images: string[]}> = (props) => {
 
 	const setThings = () => {
 			const current_el = el.children[current_image].children[0]
-		console.log(current_el);
-		
 			current_el.setAttribute('data-open', 'true')
 	}
 
