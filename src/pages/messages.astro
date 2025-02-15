@@ -3,19 +3,72 @@ import { getEntry } from "astro:content";
 import { Carousel } from "../components/Carousel"
 import Message from "../components/Message.astro"
 import BaseLayout from "../layouts/BaseLayout.astro"
+import { textSpanEnd } from "typescript";
 
 const appData = (await getEntry('app', 'data'))!.data;
 
 const messages = [
 {
-	text: "What a wonderful world it is",
-	author: "Louis Armstrong"
+		text: `
+The main man!
+Let me begin from the very beginning and tell a tale that tattles of the triumphant.
+The one of the Legend that carried between hsi should blades a heart that bleed love.
+He began on the day of love and spoke forth this truth into the world.
+We encountered him on a acold summer day and knew no one could compare.
+His soft spoken ways and large heart were beautiful to behold. His day has come once again and
+this ode is in his honour.
+For what do you give to a man who has everything?a
+Nothing, but the purest expressino of admiration.
+A brotherhood that surpasses all trepidation.
+So today, let us celebrate, Our Main Man.
+Not with gifts, but with out hearts.
+For to the man who has everything,
+We offer our deepest honour.
+The essence of the love he imparts.
+Happy Birthday to the one so rare,
+On Valentine's Day, you sine with flair.
+A friend, a guide, a brother in arms.
+Extremely cherished, our main man.
+`,
+	author: "Guess who wrote this"
 },
 {
-	text: "Instant customizations",
-	author: "KDE Plasma"
-}
+		text: `Big bro 💙 I've always looked up to you and I've always being proud to call you my big bro...
+I pray for you today that teh Lord will bless and increase you 👏, I'm blessed to have a brother like you 🧡
 
+And eheeenn El p Abeg no vex ooo 🤣 🤣🤣👐
+Na Nurse Hamilton say make I send your throwback ooo 🤣🤣🤣👐👐
+`,
+	author: "You no need guess for this one"
+	},
+	{
+		text: `Hey, Happy birthday Laurel. To convey properly the emotions I feel wen I think of you, I don't think I properly can. But one thing I want you to be is happy, fulfilled and achieve all your goals in life. It is kinda funny how I made an impulsive decision and that was the best decision I have ever made. I am so happy to have you in my life, Happy birthday once again. I love you so much.`,
+		author:`☺️`
+	},
+	{
+		text: `*sings happy birthday on key A with a high note at the end 
+Long life and prosperity bro.
+`,
+		author: "Singist Terry"
+	},
+	{
+		text: `Happy birthday skrote. To say you are a friend would be the understatement of the century.
+Your name now signifies a position in my life that no one can fill.
+Like the duke of Ediburough or The Hamilton of Scotland. "The Skrote" 😈
+You are the skrote and no one can take that away from me 🤣. Seriously though, I met you, a talkative in 200 Level and
+boy has my life changed so much since then. I have gotten to know you, we have wined and dined together, be depressed together (why??) 🤣, be happy toether, be worried together. You give freely without holding back and to be honest when we were discussing, it was kind of difficult to come to a conclusion on what to get you. I can't even say thank you because thank you would be easy a label for the value you add to my life. Whatever it is that holds us togethera, it's there for life man. I no fit dey cry now o. I get steeze to maintain 😂.
+I wish you every good thing life has to offer. Every single one of it, you are worth more.
+
+Cheers to a viking.`,
+		author: "Your ancestors"
+	},
+	{
+		text: `What can I say about him?
+A great brother, an awesome artist and an even better person
+Everyday, he teaches me how to be a better human
+Keep growing strong gee`,
+		author: 'iKAY'
+	}
 ]
 ---
 
@@ -44,7 +97,7 @@ const messages = [
 <style lang="scss">
 
 .messages {
-	--message-width: 300px;
+	--message-width: 350px;
 	--carousel-height: 450px;
 	margin-top: 1rem;
 	display: grid;
@@ -56,12 +109,15 @@ const messages = [
 	}
 
 	&-list {
-		display: grid;
+		/** display: grid;
 		gap: 1rem;
-		list-style: none;
-		grid-template-columns: repeat(auto-fill, minmax(var(--message-width), 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(var(--message-width), 1fr));**/
 		padding: 0 0.5rem;
+		list-style: none;
+		columns: 300px 2;
+		column-gap: 1rem;
 		align-items: center;
+		align-items: start;
 
 	}
 

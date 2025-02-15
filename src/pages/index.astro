@@ -9,7 +9,7 @@ const appData = (await getEntry('app', 'data'))!.data;
 let workEntries = await getCollection("work")
 workEntries = workEntries.sort((newEntry, oldEntry) => {
 	return new Date(oldEntry.data.createdAt).valueOf() - new Date(newEntry.data.createdAt).valueOf()
-}).slice(0, 2)
+}).slice(0, 3)
 
 
 

@@ -5,11 +5,14 @@ interface Props {
 }
 
 const {text, author} = Astro.props
+console.log(text.split('\n'))
 ---
 
 
 <div class="message">
-	<p class="message-text">{text}</p>
+	<div class="message-texts">
+	{text.split('\n').map(t => <p class="message-text">{t}</p>)}
+	</div>
 	<strong class="message-author">{author}</strong>
 </div>
 
@@ -23,10 +26,18 @@ const {text, author} = Astro.props
 	padding: 0.85rem 1rem 0.95rem;
 	background: var(--clr-gray-300);
 	border: 2px solid var(--clr-gray-700);
+	break-inside: avoid;
+	margin-bottom: 1rem;
+	box-shadow: 0 0 -1px 4px var(--clr-gray-800);
+
+
+	&-texts{
+		
+		line-height: 1.5;
+	}
 
 
 	&-text {
-		line-height: 1.5;
 	}
 
 	&-author {
