@@ -1,0 +1,84 @@
+---
+import { getEntry } from "astro:content";
+import { Carousel } from "../components/Carousel"
+import Message from "../components/Message.astro"
+import BaseLayout from "../layouts/BaseLayout.astro"
+
+const appData = (await getEntry('app', 'data'))!.data;
+
+const messages = [
+{
+	text: "What a wonderful world it is",
+	author: "Louis Armstrong"
+},
+{
+	text: "Instant customizations",
+	author: "KDE Plasma"
+}
+
+]
+---
+
+
+<BaseLayout>
+	<section class="messages">
+		<div class="messages-bg">
+
+		<Carousel images={appData.home_images} client:only/>
+		</div>
+	
+	
+	<ul class="messages-list">
+			{messages.map((message, index) => <li data-index={index} class="message-li">
+				<Message {...message} />
+			</li>)}
+	</ul>
+
+	</section>
+
+
+
+</BaseLayout>
+
+
+<style lang="scss">
+
+.messages {
+	--message-width: 300px;
+	--carousel-height: 450px;
+	margin-top: 1rem;
+	display: grid;
+	gap: 0.5rem;
+	isolation: isolate;
+
+	&-li {
+		display: contents;
+	}
+
+	&-list {
+		display: grid;
+		gap: 1rem;
+		list-style: none;
+		grid-template-columns: repeat(auto-fill, minmax(var(--message-width), 1fr));
+		padding: 0 0.5rem;
+		align-items: center;
+
+	}
+
+
+	&-bg {
+		position: fixed;
+		inset: 0;
+		margin-bottom: -70%;
+		z-index: -1;
+		//opacity: 0.175;
+		filter: opacity(15%)
+			blur(1px)
+			hue-rotate(45deg)
+			saturate(150%)
+			drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+
+		pointer-events: none;
+	}
+}
+</style>

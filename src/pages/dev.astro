@@ -1,0 +1,17 @@
+---
+import { Carousel } from "../components/Carousel"
+import BaseLayout from "../layouts/BaseLayout.astro"
+
+
+const images = [
+	"/d1.jpg",
+	"/d2.jpg",
+	"/d3.jpg",
+	"/d4.jpg",
+	"/demo.jpg",
+]
+---
+
+<BaseLayout>
+	<Carousel images={images} client:only />
+</BaseLayout>

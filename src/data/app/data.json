@@ -1,0 +1,16 @@
+{
+    "name": "Dennis Lazovic",
+    "news": "",
+    "message": "lorem, ipsum dolor sit amet conseqtuir",
+    "home_images": [
+        "/art/portrait_1.jpg",    
+        "/art/portrait_2.jpg",    
+        "/art/portrait_3.jpg",    
+        "/art/portrait_4.jpg" 
+    ],
+    "links": {
+        "email": "mailto:stochastis0fficial@gmail.com",
+        "whatsapp": "https://wa.link/3c9n11",
+        "x": "https://wa.link/3c9n11"
+    }
+}

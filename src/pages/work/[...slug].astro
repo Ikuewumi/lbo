@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import {WorkImage} from "../../components/WorkPage.tsx" 
+import {WorkShareBtn} from "../../components/ShareBtn.tsx"
+import { getEntry, getCollection } from "astro:content"
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const workEntries = await getCollection('work');
+  return workEntries.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const appData = (await getEntry('app', 'data'))!.data;
+console.log(entry)
+
+---
+
+<BaseLayout>
+	<section class="work">
+		<h1 class="work-title">{entry.data.name}</h1>
+<p class="work-time">
+	<svg class="work-timesvg" viewBox="0 0 24 24">
+		<use href="#calendar"></use>
+	</svg>
+			<span class="work-timespan">Drawn on <time>{new Intl.DateTimeFormat("en-US").format(new Date(entry.data.createdAt))}</time></span>
+</p>
+		<WorkImage client:only img={entry.data.url} caption={entry.data.name} />
+		<p class="work-desc">{entry.data.description}</p>
+
+<div class="work-share-bar">
+			<WorkShareBtn title={entry.data.name} text={entry.data.description} slug={entry.id} client:only />
+
+	<a target="_blank" href={appData.links.whatsapp} class="work-btn" data-btn="">
+		<svg viewBox="0 0 24 24"><use href="#whatsapp"></use></svg>
+		Connect on WhatsApp
+	</a>
+
+	<a target="_blank" href={appData.links.email} class="work-btn" data-btn="">
+		<svg viewBox="0 0 24 24"><use href="#alternate-email"></use></svg>
+		Send a mail
+	</a>
+	
+</div>
+	</section>
+
+
+</BaseLayout>
+
+
+
+<style lang="scss">
+.work {
+	display: grid;
+	gap: 0.5rem;
+	margin-top: 1rem;
+
+
+	&-title {
+		font-size: var(--step-4);
+		font-family: var(--font-display);
+		font-weight: 700;
+		line-height: 0.9;
+	}
+
+	&-time {
+		--icon-size: 1rem;
+		display: flex;
+		place-items: center;
+		gap: 0.25rem;
+		color: var(--clr-gray-800);
+		font-style: italic;
+
+		time {
+			text-decoration: underline 2px dotted var(--clr-gray-500);
+			cursor: pointer;
+		}
+
+	}
+
+		
+
+	&-desc {
+		margin-top: 0.5rem;
+		line-height: 1.5;
+		font-size: var(--step-1);
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	&-share-bar {
+		margin-top: 0.75rem;
+		display: flex;
+		gap: 0.65rem 1rem;
+		flex-flow: row wrap;
+	}
+
+	&-btn {
+		--icon-size: 1.5rem;
+		--btn-bg: var(--clr-gray-200);
+		--btn-border: 1px solid var(--clr-gray-800);
+		padding: 0.5rem 0.75rem 0.55rem;
+		gap: 0.25rem;
+		text-decoration: none;
+		font-size: calc(var(--step-1) * 0.85);
+	}
+}
+</style>

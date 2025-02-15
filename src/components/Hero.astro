@@ -1,44 +1,51 @@
 ---
+import { getEntry } from "astro:content";
+import { Carousel } from "./Carousel"
+
+
+const appData = (await getEntry('app', 'data'))!.data;
 ---
 
 <section class="hero">
+	<div class="hero-container">
 	<div class="hero-carousel">
-		<img src="/demo.jpg" alt="" class="hero-img">
+		<Carousel images={appData.home_images} client:only />
 	</div>
 	<div class="hero-content">
-			<h1 class="hero-name">Dennis Laazovic</h1>
+		<h1 class="hero-name">{appData.name}</h1>
 			<p class="hero-desc">
-				Lorem ipsum dolor sit amet consectetur, adipisicing
-				elit. Repudiandae expedita atque eius mollitia
-				consequuntur dolore excepturi perferendis culpa commodi
-				nesciunt.
+				{appData.message}
 			</p>
+		</div>
 	</div>
 </section>
 
 <style lang="scss">
 	.hero {
 		--max-height: 450px;
+		--carousel-height: var(--max-height);
 		height: var(--max-height);
-		width: 100%;
+		&-container {
 		display: grid;
 		grid-template: 1fr / 1fr;
 		overflow: hidden;
 		margin-top: 1rem;
+		isolation: isolate;
+
+
+		}
 
 		& > * {
 			grid-area: 1 / -1;
 		}
 
 		&-carousel {
-			background: grey;
-			width: 100%;
-		}
-
-		&-img {
-			height: var(--max-height);
-			width: 100%;
-			object-fit: cover;
+			width: auto;
+			z-index: -1;
+			background: hsl(0deg 0% 0% / 10%);
+			&> * {
+				height: 100%;
+			}
 		}
 
 		&-content {
@@ -50,6 +57,7 @@
 			padding: 1rem 1.5rem 1.5rem;
 			align-self: end;
 			justify-self: start;
+			margin-top: -100%;
 		}
 
 

@@ -2,6 +2,9 @@
 import "../styles/base.scss";
 import Assets from "../components/Assets.astro";
 import ImageBox from "../components/ImageBox";
+import {Toast} from "../components/Toast.tsx"
+import { getEntry } from "astro:content";
+const appData = (await getEntry('app', 'data'))!.data;
 ---
 
 <html lang="en">
@@ -19,7 +22,7 @@ import ImageBox from "../components/ImageBox";
 		<div class="sgrid" id="root">
 			<header class="header">
 				<div class="header-logo">
-					<strong class="header-text"> L.O.</strong>
+					<a class="header-hlink" href="/"><strong class="header-text"> L.O.</strong></a>
 				</div>
 				<nav class="header-nav">
 					<ul class="header-list">
@@ -33,20 +36,22 @@ import ImageBox from "../components/ImageBox";
 						</li>
 <li class="header-item">
 							<a
-								href="/work"
+								href="/gallery"
 								class="header-link"
 								>Gallery</a
 							>
 							
 						</li>
+						
 <li class="header-item">
 							<a
-								href="/"
+								href="/messages"
 								class="header-link"
-								>Home</a
+								>Messages</a
 							>
 							
 						</li>
+
 
 					</ul>
 				</nav>
@@ -57,19 +62,16 @@ import ImageBox from "../components/ImageBox";
 			</main>
 
 			<footer class="footer">
-				<p class="footer-text">Copyright &copy; <strong class="footer-name">wolfe</strong> 2025.</p>
+				<p class="footer-text">Copyright &copy; <strong class="footer-name">{appData.name}</strong> {new Date().getFullYear()}</p>
 				<ul class="footer-links">
 					<li class="footer-li">
-						<a href="#" class="footer-link">Facebook</a>
+						<a href={appData.links.whatsapp} class="footer-link">WhatsApp</a>
 					</li>
 					<li class="footer-li">
-						<a href="#" class="footer-link">Mastodoon</a>
+						<a href={appData.links.email} class="footer-link">Email</a>
 					</li>
 					<li class="footer-li">
-						<a href="#" class="footer-link">X</a>
-					</li>
-					<li class="footer-li">
-						<a href="#" class="footer-link">Telegram</a>
+						<a href={appData.links.x} class="footer-link">X</a>
 					</li>
 				</ul>
 			</footer>
@@ -77,13 +79,16 @@ import ImageBox from "../components/ImageBox";
 
 
 		<ImageBox client:only />
+		<Toast client:only />	
 		<Assets />
 	</body>
 </html>
 
 
 <style lang="scss">
-
+main {
+	min-height: 70vh;
+}
 
 .header {
 	display: flex;
@@ -121,6 +126,12 @@ import ImageBox from "../components/ImageBox";
 	&-link {
 		color: var(--clr-gray-900);
 	}
+
+
+	&-hlink, &-hlink:visited, &-hlink:active {
+		text-decoration: none;
+		color: var(--clr-gray-900);
+	}
 }
 
 .footer {
@@ -134,7 +145,7 @@ import ImageBox from "../components/ImageBox";
 
 
 	&-name {
-		font-style: italic;
+		// font-style: italic;
 		font-weight: 600;
 	}
 

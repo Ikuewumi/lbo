@@ -1,0 +1,22 @@
+.work-barbtn {
+--btn-clr: var(--clr-black);
+		gap: 0.4rem;
+		width: 100%;
+		border-radius: 0 0 1vmax 1vmax;
+		text-transform: uppercase;
+		font-size: calc(var(--step-1) * 1.25);
+		font-family: var(--font-display);
+		font-weight: 300;
+
+}
+
+
+.work-sharebtn {
+		--icon-size: 1.5rem;
+		--btn-bg: var(--clr-gray-200);
+		--btn-border: 1px solid var(--clr-gray-800);
+		padding: 0.5rem 0.75rem 0.55rem;
+		gap: 0.25rem;
+		text-decoration: none;
+		font-size: calc(var(--step-1) * 0.85);
+}

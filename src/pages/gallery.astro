@@ -1,37 +1,17 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Work from "../components/Work.astro";
 
-const appData = (await getEntry('app', 'data'))!.data;
 let workEntries = await getCollection("work")
 workEntries = workEntries.sort((newEntry, oldEntry) => {
 	return new Date(oldEntry.data.createdAt).valueOf() - new Date(newEntry.data.createdAt).valueOf()
-}).slice(0, 2)
-
-
-
-/*
- * "/d1.jpg",
-	    "/d2.jpg",
-	    "/d3.jpg",
-	    "/d4.jpg",
-	    "/demo.jpg"
-
- *
- * 
- * */
-
+})
 ---
 
 <BaseLayout>
-	<Hero />
 
 	<section class="works">
-		<!-- <h2 class="works-heading">Some of his other works</h2> -->
-
 		<ul class="works-list">
 			{workEntries.map((work, index) => <li class="work-li" data-index={index}>
 				<Work {...work.data} slug={work.id} />
@@ -39,32 +19,7 @@ workEntries = workEntries.sort((newEntry, oldEntry) => {
 			)}
 		</ul>
 
-
 	</section>
-
-
-
-	<section class="cta">
-		<h2 class="cta-heading">Ready to connect?</h2>
-
-		<div class="cta-btn-bar">
-			<a target="_blank" href={appData.links.whatsapp} class="cta-btn" data-btn="">
-				<svg viewBox="0 0 24 24">
-					<use href="#whatsapp"></use>
-				</svg>
-				WhatsApp</a>
-			<a target="_blank" href={appData.links.email} class="cta-btn" data-btn="">
-				<svg viewBox="0 0 24 24">
-					<use href="#alternate-email"></use>
-				</svg>
-				Email</a>
-		</div>
-
-
-
-	</section>
-
-
 
 </BaseLayout>
 
@@ -84,7 +39,7 @@ workEntries = workEntries.sort((newEntry, oldEntry) => {
 
 	&-list {
 		display: grid;
-		gap: 1rem;
+		gap: 2rem 1rem;
 		list-style: none;
 		grid-template-columns: repeat(auto-fill, minmax(var(--work-width), 1fr));
 	}

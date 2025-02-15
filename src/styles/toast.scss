@@ -1,0 +1,19 @@
+.toast {
+	position: fixed;
+	inset: 1rem 1rem auto auto;
+	max-width: min(80vw, 450px);
+	padding: 0.75rem 1.25rem 0.8rem;
+	background: hsl(0deg 0% 0% / 70%);
+	backdrop-filter: blur(5px);
+	color: var(--clr-gray-200);
+	font-size: calc(var(--step-1) * 0.95);
+	border-radius: 1vw;
+	transform: translateX(0%) scale(1);
+	transform-origin: top left;
+	transition: transform 250ms ease-in;
+
+	&[data-open="false"] {
+		transform: translateX(calc(100% + 2rem)) scale(0);
+	}
+
+}

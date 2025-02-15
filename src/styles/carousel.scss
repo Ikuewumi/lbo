@@ -1,0 +1,41 @@
+@property --image-id {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: #c0ffee;
+}
+
+.carousel {
+	--c-height: var(--carousel-height, 450px);
+	--c-position: var(--carousel-position, top left);
+	width: 100%;
+
+	&-list {
+		display: grid;
+		gap: 2rem; 
+		height: var(--c-height);
+		grid-template: 1fr / 1fr;
+		list-style: none;
+		position: relative;
+	}
+
+	
+
+	&-li {
+		display: contents;
+	}	
+
+	&-img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: var(--c-position);
+		opacity: 0;
+		transition: opacity 1s ease;
+
+		&[data-open=true] {
+			opacity: 1;
+		}
+	}
+}
+
