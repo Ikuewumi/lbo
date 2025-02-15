@@ -26,7 +26,7 @@ const work = defineCollection({
   schema: z.object({ 
 	name: z.string(),
 	description: z.string(),
-	createdAt: z.string().date(),
+	createdAt: z.string(),
 	url: z.string()	
   })
 })
