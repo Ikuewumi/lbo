@@ -10,13 +10,13 @@ interface Props {
 }
 
 const {slug, name, url, description, createdAt} = Astro.props
-const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const newUrl = url.startsWith("/public/") ? url.slice(7) : url
 
 
 ---
 
 <div class="work-item">
-	<img src={url} alt="" class="work-img">
+	<img src={newUrl} alt="" class="work-img">
 	<div class="work-content">
 		<a href={`/work/${slug}`} class="work-link"><h3 class="work-title">{name}</h3></a>
 		<p class="work-desc">{description}</p>

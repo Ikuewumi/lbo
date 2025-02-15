@@ -15,6 +15,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const appData = (await getEntry('app', 'data'))!.data;
 
+const newUrl = entry.data.url.startsWith("/public/") ? entry.data.url.slice(7) : entry.data.url
 ---
 
 <BaseLayout>
@@ -26,7 +27,7 @@ const appData = (await getEntry('app', 'data'))!.data;
 	</svg>
 			<span class="work-timespan">Drawn on <time>{new Intl.DateTimeFormat("en-US").format(new Date(entry.data.createdAt))}</time></span>
 </p>
-		<WorkImage client:only img={entry.data.url} caption={entry.data.name} />
+		<WorkImage client:only img={newUrl} caption={entry.data.name} />
 		<p class="work-desc">{entry.data.description}</p>
 
 <div class="work-share-bar">
