@@ -10,6 +10,7 @@ interface Props {
 }
 
 const {slug, name, url, description, createdAt} = Astro.props
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 
 ---
@@ -23,7 +24,7 @@ const {slug, name, url, description, createdAt} = Astro.props
 			<svg class="work-timesvg" viewBox="0 0 24 24">
 				<use href="#calendar"></use>
 			</svg>
-			<span class="work-timespan">{createdAt}</span>
+			<span class="work-timespan">{new Date(createdAt).toLocaleDateString("en-US")}</span>
 		</div>
 	</div>
 
